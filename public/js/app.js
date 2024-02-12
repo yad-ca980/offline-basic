@@ -20,11 +20,15 @@ if(window.caches){
             "logo512.png",
             "/pages/Oflime.html"
         ]).then(()=>{
-             cache.delete('logo192.png')
+            //Interceptar un archivos en el cache por otro
+            cache.put("/index.html", new Response("Interceptando archivos index"))
         })
-        cache.match('/index.html').then(res=>{
-            res.text().then(console.log)
+        //Obtener En todos los caches existendes en la aplicación
+        cache.keys().then((keys) =>{
+            console.log(keys) 
         })
+
+    
      
 
     })
